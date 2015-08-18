@@ -8,16 +8,32 @@
   </head>
   <body class="mixpanel-platform-body">
     <div class="mixpanel-platform-section">
-      <div id="eventSelect" style="float: left;"></div>
-      <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
-      <div id="propSelect" style="float: left;"></div>
+      <div id="mpselect" style="float: right;"></div><br/><br/><br/>
       <div id="dateSelect" style="float: right;"></div>
       <div style="clear: both;"></div>
       <div id="graph"></div>
     </div>
     <div id="table"></div>
     <script>
-      var eventSelect = $('#eventSelect').MPEventSelect();
+    MP.api.ready(function () {
+      
+      var options = {
+          items: [
+            {label: 'Jay-Z', value: 'Jay-Z'},
+            {label: 'Miley Cyrus', value: 'Miley Cyrus'},
+            {label: 'Beyonce', value: 'Beyonce'},
+            {label: 'J-Lo', value: 'J-Lo'},
+            {label: 'Kylie Jenner', value: 'Kylie Jenner'},
+            {label: 'Lebron James', value: 'Lebron James'},
+            {label: 'Danica Patrick', value: 'Danica Patrick'},
+            {label: 'Lil Wayne', value: 'Lil Wayne'},
+            ]
+        };
+        var broadcasterSelect  = $('#mpselect').MPSelect(options);
+        var dateSelect  = $('#dateSelect').MPDatepicker();
+      
+      
+    }
       var propSelect  = $('#propSelect').MPPropertySelect();
       var dateSelect  = $('#dateSelect').MPDatepicker();
       var eventGraph  = $('#graph').MPChart({chartType: 'line'});
