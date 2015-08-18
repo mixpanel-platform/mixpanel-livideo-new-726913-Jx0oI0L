@@ -67,11 +67,11 @@
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
           $('Played Broadcast by Location').appendTo('body');
-          $('<div class="overallData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
-              chartType: 'bar',
-              data: results
-          });
-          eventGraph.MPChart('setData', results);
+          // $('<div class="overallData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+          //     chartType: 'bar',
+          //     data: results
+          // });
+          eventGraphOne.MPChart('setData', results);
           eventTable.MPTable('setData', results);
         });
       }
