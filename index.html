@@ -68,8 +68,8 @@
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
           $('Played Broadcast by Location').appendTo('body');
           $('<div class="overallData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
-              chartType: 'line',
-              data: overallData
+              chartType: 'bar',
+              data: results
           });
           eventGraph.MPChart('setData', results);
           eventTable.MPTable('setData', results);
