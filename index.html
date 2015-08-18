@@ -64,14 +64,13 @@
         });
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-          $('<h1>Played Broadcast by Location from ' + date + '</h1>' ).appendTo('body');
+          $('<h1>Played Broadcast by Location'</h1>').appendTo('body');
           
           $('<div class="sessionData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
-            chartType: 'line',
+            chartType: 'bar',
             data: results
           });
           
-          $('<div></div>').appendTo('body').MPChart({chartType: 'bar', data: results});
           $('<div></div>').appendTo('body').MPTable({firstColHeader: 'Region and OS', data: results, showPercentages: false});
           
           
@@ -80,6 +79,8 @@
       }
       
       var runQuery = function() {
+        
+        
         //obtain broadcaster and date range 
         var broadcasterName  = broadcasterSelect.MPSelect('value'),
             dateRange = dateSelect.MPDatepicker('value');
