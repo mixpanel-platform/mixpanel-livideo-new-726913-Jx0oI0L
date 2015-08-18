@@ -70,6 +70,20 @@
         });
       }
       
+      function subscriptionsByAgeGroup(broadcaster, date) {
+        var params =  $.extend({}, date, {
+          'where': '\"' + broadcaster + '\" in string(properties[\"Broadcaster\"])',
+          'limit': 10,
+          'interval': getInterval(date)
+        });
+        
+        MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(results) {
+          $('Subscriptions by Age Group').appendTo('body');
+          eventGraph.MPChart('setData', results);
+          eventTable.MPTable('setData', results);
+        });
+      }
+      
       var runQuery = function() {
         
         
@@ -81,7 +95,9 @@
         if (broadcasterName) {
           var dates = getDates();
           
-          playedBroadcastByLocation(broadcasterName, dates)
+          playedBroadcastByLocation(broadcasterName, dates);
+          subscriptionsByAgeGroup(broadcasterName, dates);
+          
           
           
           
