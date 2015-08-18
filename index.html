@@ -56,6 +56,30 @@
       };
       
       
+      function playedBroadcastByLocation(broadcaster, date) {
+        var params =  $.extend({}, date, {
+          'type': typeName,
+          'where': '\"' + broadcaster + '\" in string(properties[\"Broadcaster\"]) and defined (properties[\"$city\"])',
+          //'on': 'properties["$city"]',
+          'interval': getInterval(date)
+        });
+        
+        MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
+          $('<h1>Played Broadcast by Location from ' + startDate + ' to ' + endDate + '</h1>' ).appendTo('body');
+          
+          $('<div class="sessionData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+            chartType: 'line',
+            data: results
+          });
+          
+          $('<div></div>').appendTo('body').MPChart({chartType: 'bar', data: data});
+          $('<div></div>').appendTo('body').MPTable({firstColHeader: 'Region and OS', data: data, showPercentages: false});
+          
+          
+        })
+            
+      }
+      
       var runQuery = function() {
         //obtain broadcaster and date range 
         var broadcasterName  = typeSelect.MPSelect('value'),
@@ -63,6 +87,31 @@
             
         //
         if (broadcasterName) {
+          var dates = getDates();
+          
+          playedBroadcastByLocation(broadcasterName, dates)
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           
         };
       };
