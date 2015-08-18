@@ -38,7 +38,9 @@
         };
       var broadcasterSelect  = $('#mpselect').MPSelect(options);
       var dateSelect  = $('#dateSelect').MPDatepicker();
-      var eventGraph  = $('#graph').MPChart({chartType: 'bar'});
+      var eventGraphOne  = $('#graph').MPChart({chartType: 'bar'});
+      var eventGraphTwo  = $('#graph').MPChart({chartType: 'bar'});
+
       var eventStackedGraph  = $('#mpchart').MPChart({chartType: 'bar', stacked: true});
       var eventTable  = $('#table').MPTable({
         showPercentages: false,
@@ -65,6 +67,10 @@
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
           $('Played Broadcast by Location').appendTo('body');
+          $('<div class="overallData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+              chartType: 'line',
+              data: overallData
+          });
           eventGraph.MPChart('setData', results);
           eventTable.MPTable('setData', results);
         });
@@ -79,7 +85,7 @@
         
         MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(results) {
           $('Subscriptions by Age Group').appendTo('body');
-          eventGraph.MPChart('setData', results);
+          eventGraphTwo.MPChart('setData', results);
           eventTable.MPTable('setData', results);
         });
       }
