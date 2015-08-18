@@ -58,7 +58,6 @@
       
       function playedBroadcastByLocation(broadcaster, date) {
         var params =  $.extend({}, date, {
-          'type': typeName,
           'where': '\"' + broadcaster + '\" in string(properties[\"Broadcaster\"]) and defined (properties[\"$city\"])',
           //'on': 'properties["$city"]',
           'interval': getInterval(date)
