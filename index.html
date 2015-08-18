@@ -64,15 +64,15 @@
         });
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-          $('<h1>Played Broadcast by Location from ' + startDate + ' to ' + endDate + '</h1>' ).appendTo('body');
+          $('<h1>Played Broadcast by Location from ' + date + '</h1>' ).appendTo('body');
           
           $('<div class="sessionData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
             chartType: 'line',
             data: results
           });
           
-          $('<div></div>').appendTo('body').MPChart({chartType: 'bar', data: data});
-          $('<div></div>').appendTo('body').MPTable({firstColHeader: 'Region and OS', data: data, showPercentages: false});
+          $('<div></div>').appendTo('body').MPChart({chartType: 'bar', data: results});
+          $('<div></div>').appendTo('body').MPTable({firstColHeader: 'Region and OS', data: results, showPercentages: false});
           
           
         })
