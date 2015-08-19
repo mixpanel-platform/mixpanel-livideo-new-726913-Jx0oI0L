@@ -57,6 +57,7 @@
         if (broadcasterName) {
           var dates = getDates();
           
+          
           //played broadcast by top locations
           var params =  $.extend({}, dates, {
             'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"]) and defined (properties[\"$city\"])',
@@ -79,6 +80,7 @@
             });
           });
           
+          
           //subscriptions by age range
           var params =  $.extend({}, dates, {
             'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
@@ -100,6 +102,7 @@
               data: resultsTwo
             });
           });
+          
           
           //played broadcast over last 96 hours
           var params =  $.extend({}, dates, {
@@ -124,6 +127,7 @@
             });
           });
           
+          
           //played broadcast over selected time period
           var params =  $.extend({}, dates, {
             'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
@@ -132,7 +136,7 @@
           
           MP.api.segment('Played Broadcast', dateRange, params).done(function(resultsFour) {
             console.log(resultsFour.values())
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Overall Broadcast Watch Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Broadcast Watch Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
