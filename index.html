@@ -19,7 +19,7 @@
     
     <script>
     MP.api.ready(function () {
-      
+      //setting up dropdowns
       var options = {
           items: [
             {label: 'Select Broadcaster', value: ''},
@@ -36,7 +36,6 @@
       var broadcasterSelect  = $('#mpselect').MPSelect(options);
       var dateSelect  = $('#dateSelect').MPDatepicker();
       
-      
       //convenience method for grabbing that datepicker value
       getDates = function() {
         return dateSelect.MPDatepicker('value')
@@ -49,115 +48,81 @@
       };
       
       
-      function playedBroadcastByLocation(broadcaster, date) {
-        var params =  $.extend({}, date, {
-          'where': '\"' + broadcaster + '\" in string(properties[\"Broadcaster\"]) and defined (properties[\"$city\"])',
-          'limit': 10,
-          'interval': getInterval(date)
-        });
-        
-        MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Location</h1>' ).css({'padding': '10px'}).appendTo('body');
-          
-          $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
-              chartType: 'bar',
-              data: results
-          });
-          
-           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
-            showPercentages: true,
-            firstColHeader: 'City',
-            data: results
-          });
-        });
-      };
-      
-      function subscriptionsByAgeGroup(broadcaster, date) {
-        var params =  $.extend({}, date, {
-          'where': '\"' + broadcaster + '\" in string(properties[\"Broadcaster\"])',
-          'limit': 10,
-          'interval': getInterval(date)
-        });
-        
-        MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsOne) {
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
-          
-          $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
-              chartType: 'bar',
-              data: resultsOne
-          });
-          
-           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
-            showPercentages: true,
-            firstColHeader: 'Age Group',
-            data: resultsOne
-          });
-        }).fail(function($xhr) {
-          console.log('error with request', $xhr);
-        });
-      };
-      
       var runQuery = function() {
-        
-        
         //obtain broadcaster and date range 
         var broadcasterName  = broadcasterSelect.MPSelect('value'),
             dateRange = dateSelect.MPDatepicker('value');
             
-        //
+        //selected broadcaster
         if (broadcasterName) {
           var dates = getDates();
           
-          //playedBroadcastByLocation(broadcasterName, dates);
-          //subscriptionsByAgeGroup(broadcasterName, dates);
-          
+          //played broadcast by top locations
           var params =  $.extend({}, dates, {
             'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"]) and defined (properties[\"$city\"])',
             'limit': 10,
             'interval': getInterval(dates)
           });
           
-          MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Location</h1>' ).css({'padding': '10px'}).appendTo('body');
+          MP.api.segment('Played Broadcast', '$city', params).done(function(resultsOne) {
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
-                chartType: 'bar',
-                data: results
-            });
-            
-             $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
-              showPercentages: true,
-              firstColHeader: 'City',
-              data: results
-            });
-          });
-          
-          
-          
-          
-          
-          var params =  $.extend({}, dates, {
-            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
-            'limit': 10,
-            'interval': getInterval(dates)
-          });
-          
-          MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsOne) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
-            
-            $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
                 chartType: 'bar',
                 data: resultsOne
             });
             
              $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
               showPercentages: true,
-              firstColHeader: 'Age Group',
+              firstColHeader: 'City',
               data: resultsOne
             });
-          }).fail(function($xhr) {
-            console.log('error with request', $xhr);
           });
+          
+          //subscriptions by age range
+          var params =  $.extend({}, dates, {
+            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
+            'limit': 10,
+            'interval': getInterval(dates)
+          });
+          
+          MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsTwo) {
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
+            
+            $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
+                chartType: 'bar',
+                data: resultsTwo
+            });
+            
+             $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+              showPercentages: true,
+              firstColHeader: 'Age Group',
+              data: resultsTwo
+            });
+          });
+          
+          //subscriptions by age range
+          var params =  $.extend({}, dates, {
+            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
+            'limit': 10,
+            'interval': getInterval(dates)
+          });
+          
+          MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsTwo) {
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
+            
+            $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+                chartType: 'bar',
+                data: resultsTwo
+            });
+            
+             $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+              showPercentages: true,
+              firstColHeader: 'Age Group',
+              data: resultsTwo
+            });
+          });
+          
           
           
           
