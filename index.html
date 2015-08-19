@@ -79,7 +79,7 @@
           'interval': getInterval(date)
         });
         
-        MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(resultsOne) {
+        MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsOne) {
           $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
           
           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
@@ -109,8 +109,30 @@
           var dates = getDates();
           
           //playedBroadcastByLocation(broadcasterName, dates);
-          subscriptionsByAgeGroup(broadcasterName, dates);
+          //subscriptionsByAgeGroup(broadcasterName, dates);
           
+          var params =  $.extend({}, dates, {
+            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
+            'limit': 10,
+            'interval': getInterval(dates)
+          });
+          
+          MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsOne) {
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
+            
+            $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+                chartType: 'bar',
+                data: resultsOne
+            });
+            
+             $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+              showPercentages: true,
+              firstColHeader: 'Age Group',
+              data: resultsOne
+            });
+          }).fail(function($xhr) {
+            console.log('error with request', $xhr);
+          });
           
           
           
