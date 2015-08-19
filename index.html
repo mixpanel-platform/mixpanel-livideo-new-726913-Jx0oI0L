@@ -15,13 +15,6 @@
       <div id="mpselect" style="float: left;"></div>
       <div id="dateSelect" style="float: right;"></div><br/><br/><br>
       <div style="clear: both;"></div>
-      
-      <div id="graphOne"></div>
-      <div id="tableOne"></div>
-      
-      <div id="graphTwo"></div>
-      <div id="tableTwo"></div>
-      <div id="mpchart"></div>
     </div>
     
     <script>
@@ -42,12 +35,6 @@
         };
       var broadcasterSelect  = $('#mpselect').MPSelect(options);
       var dateSelect  = $('#dateSelect').MPDatepicker();
-      var eventGraphOne  = $('#graphOne').MPChart({chartType: 'bar'});
-      var eventTableOne  = $('#tableOne').MPTable();
-      var eventGraphTwo  = $('#graphTwo').MPChart({chartType: 'bar'});
-      var eventTableTwo  = $('#tableTwo').MPTable();
-
-      var eventStackedGraph  = $('#mpchart').MPChart({chartType: 'bar', stacked: true});
       
       
       //convenience method for grabbing that datepicker value
@@ -70,16 +57,7 @@
         });
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-          $('<span>' + "Played Broadcast by Location" + '</span>').css({
-              'background': 'white',
-              'border': '1px solid #7a8195',
-              'border-radius': '5px',
-              'color': '#7a8195',
-              'display': 'inline-block',
-              'margin-bottom': '20px',
-              'margin-top': '10px',
-              'padding': '10px'            
-            }).appendTo('body');
+          $('<h1 style="font-size: 12px; color: rgb(95,105,131)"> Played Broadcast by Location</h1>' ).appendTo('body');
           
           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
               chartType: 'bar',
