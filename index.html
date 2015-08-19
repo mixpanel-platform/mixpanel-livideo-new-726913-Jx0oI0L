@@ -198,8 +198,7 @@
           
         //average playlength
         var output = {};
-        var event = "Played Broadcast"
-        var output.event = {};
+        output[event] = {};
         var params =  $.extend({}, dates, {
           'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
           'interval': getInterval(dates),
@@ -208,7 +207,7 @@
           
         MP.api.segment('Played Broadcast', 'Length', params).done(function(resultsSeven) {
           var result = resultsSeven.values();
-          output.event = result
+          output[event] = result
           
           
           
