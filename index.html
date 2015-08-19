@@ -91,7 +91,7 @@
           });
           
           MP.api.segment('Played Broadcast', 'Age Range', params).done(function(resultsTwo) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast by Age Group</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast by Age Group</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'bar',
@@ -115,7 +115,7 @@
           });
           
           MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
@@ -137,7 +137,7 @@
           });
           
           MP.api.segment('Played Broadcast', dateRange, params).done(function(resultsFour) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
@@ -159,7 +159,7 @@
         });
           
         MP.api.segment('Played Broadcast', 'Keyword', params).done(function(resultsFive) {
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Popular Broadcast Keyword over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
+          $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">>'  + broadcasterName + ': Popular Broadcast Keyword over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
           $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
             chartType: 'bar',
@@ -182,7 +182,7 @@
         });
           
         MP.api.segment('Played Broadcast', 'Broadcasters', params).done(function(resultsSix) {
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Who your fans are also watching</h1>' ).css({'padding': '10px'}).appendTo('body');
+          $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Who your fans are also watching</h1>' ).css({'padding': '10px'}).appendTo('body');
             
           $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
             chartType: 'bar',
@@ -209,7 +209,7 @@
           var result = resultsSeven.values();
           output["Played Broadcast"] = result;
           
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Avergage time spent watching stream</h1>' ).css({'padding': '10px'}).appendTo('body');
+          $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Avergage time spent watching stream</h1>' ).css({'padding': '10px'}).appendTo('body');
             
           $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
             chartType: 'line',
