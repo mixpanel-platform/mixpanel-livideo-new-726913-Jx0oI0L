@@ -94,7 +94,7 @@
                 data: resultsTwo
             });
             
-             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPTable({
+             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
               showPercentages: true,
               firstColHeader: 'Age Group',
               data: resultsTwo
@@ -109,14 +109,14 @@
           });
           
           MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsTwo) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).css({'padding': '10px'}).appendTo('body');
             
-            $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+            $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'bar',
                 data: resultsTwo
             });
             
-             $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
               showPercentages: true,
               firstColHeader: 'Age Group',
               data: resultsTwo
