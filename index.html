@@ -130,19 +130,19 @@
             'interval': getInterval(dates),
           });
           
-          MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
+          MP.api.segment('Played Broadcast', params).done(function(resultsFour) {
             console.log(resultsThree.values())
             $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Overall Broadcast Watch Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
-                data: resultsThree
+                data: resultsFour
             });
             
              $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
               showPercentages: true,
               firstColHeader: 'Event',
-              data: resultsThree
+              data: resultsFour
             });
           });
           
