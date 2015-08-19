@@ -101,15 +101,16 @@
             });
           });
           
-          //played broadcast over time
+          //played broadcast over last 96 hours
           var params =  $.extend({}, dates, {
             'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
             'unit': 'hour',
-            'interval': getInterval(dates)
+            'from': moment().subtract(4, 'days'),
+            'to': moment()
           });
           
           MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Broadcast Played over Time</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Broadcast Played over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
