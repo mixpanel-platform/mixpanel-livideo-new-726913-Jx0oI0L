@@ -92,6 +92,8 @@
             firstColHeader: 'Age Group',
             data: resultsOne
           });
+        }).fail(function($xhr) {
+          console.log('error with request', $xhr);
         });
       };
       
