@@ -226,6 +226,32 @@
         });  
           
           
+        //////////////Total $ of Completed Subscriptions over time//////////////
+        var outputTwo = {};
+        var params =  $.extend({}, dates, {
+          'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
+          'interval': getInterval(dates),
+          'method': 'sum'
+        });
+          
+        MP.api.segment('Played Broadcast', 'Cost', params).done(function(resultsEight) {
+          var result = resultsEight.values();
+          outputTwo["Played Broadcast"] = result;
+          
+          $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Total $ of New Subscriptions over time</h1>' ).css({'padding': '10px'}).appendTo('body');
+            
+          $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
+            chartType: 'line',
+            data: outputTwo
+          });
+            
+          $('<div class = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
+            showPercentages: true,
+            firstColHeader: 'Cost',
+            data: outputTwo
+          }); 
+        });    
+          
         };
       };
       broadcasterSelect.on('change', runQuery);
