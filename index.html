@@ -66,7 +66,7 @@
           });
           
           MP.api.segment('Played Broadcast', '$city', params).done(function(resultsOne) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Played Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'bar',
@@ -88,8 +88,8 @@
             'interval': getInterval(dates)
           });
           
-          MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsTwo) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Subscriptions by Age Group</h1>' ).css({'padding': '10px'}).appendTo('body');
+          MP.api.segment('Played Broadcast', 'Age Range', params).done(function(resultsTwo) {
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast by Age Group</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'bar',
@@ -113,7 +113,7 @@
           });
           
           MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Broadcast Watch Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
@@ -135,8 +135,7 @@
           });
           
           MP.api.segment('Played Broadcast', dateRange, params).done(function(resultsFour) {
-            console.log(resultsFour.values())
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Broadcast Watch Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
@@ -148,9 +147,7 @@
               firstColHeader: 'Event',
               data: resultsFour
             });
-          }).fail(function($xhr) {
-          console.log('error with request', $xhr);
-        });;
+          });
         
         
         //video category 
