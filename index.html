@@ -75,7 +75,7 @@
           //     data: results
           // });
           eventGraphOne.MPChart('setData', results);
-          eventTable.MPTable('setData', results);
+          eventTableOne.MPTable('setData', results);
         });
       }
       
@@ -88,7 +88,7 @@
         
         MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(results) {
           eventGraphTwo.MPChart('setData', results);
-          eventTable.MPTable('setData', results);
+          eventTableTwo.MPTable('setData', results);
         });
       }
       
