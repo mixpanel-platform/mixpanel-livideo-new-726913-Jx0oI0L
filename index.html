@@ -69,12 +69,12 @@
           MP.api.segment('Played Broadcast', '$city', params).done(function(resultsOne) {
             $('<h1 class = "graphs" style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
             
-            $('<div> id = "graphs" </div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
+            $('<div id = "graphs"> </div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'bar',
                 data: resultsOne
             });
             
-             $('<div> id = "graphs" </div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
+             $('<div id = "graphs"></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
               showPercentages: true,
               firstColHeader: 'City',
               data: resultsOne
