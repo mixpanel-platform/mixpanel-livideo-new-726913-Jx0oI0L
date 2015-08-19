@@ -202,18 +202,18 @@
           'method': 'average'
         });
           
-        MP.api.segment('Played Broadcast', 'Length', params).done(function(resultsSix) {
+        MP.api.segment('Played Broadcast', 'Length', params).done(function(resultsSeven) {
           $('<h1 style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Who your fans are also watching</h1>' ).css({'padding': '10px'}).appendTo('body');
             
           $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
             chartType: 'line',
-            data: resultsSix
+            data: resultsSeven
           });
             
           $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
             showPercentages: true,
             firstColHeader: 'Broadcaster',
-            data: resultsSix
+            data: resultsSeven
           }); 
         });  
           
