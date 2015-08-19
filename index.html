@@ -66,13 +66,23 @@
         });
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-          $('Played Broadcast by Location').appendTo('body');
+          $('<span>' + "Played Broadcast by Location" + '</span>').css({
+              'background': 'white',
+              'border': '1px solid #7a8195',
+              'border-radius': '5px',
+              'color': '#7a8195',
+              'display': 'inline-block',
+              'margin-bottom': '20px',
+              'margin-top': '10px',
+              'padding': '10px'            
+            }).appendTo('body');
+            
           $('<div class="overallData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
               chartType: 'bar',
               data: results
           });
-          eventGraphOne.MPChart('setData', results);
-          eventTable.MPTable('setData', results);
+          
+          $('<div></div>').appendTo('body').MPTable({firstColHeader: 'City', data: results, showPercentages: false});
         });
       }
       
