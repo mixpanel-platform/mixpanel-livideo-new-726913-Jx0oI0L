@@ -156,22 +156,23 @@
         //video category 
         var params =  $.extend({}, dates, {
           'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
-            'interval': getInterval(dates)
-          });
+          'interval': getInterval(dates)
+        });
           
-          MP.api.segment('Played Broadcast', 'Keyword', params).done(function(resultsFive) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
+        MP.api.segment('Played Broadcast', 'Keyword', params).done(function(resultsFive) {
+          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
             
-            $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
-                chartType: 'bar',
-                data: resultsFive
-            });
+          $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
+            chartType: 'bar',
+            data: resultsFive
+          });
             
-             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
-              showPercentages: true,
-              firstColHeader: 'City',
-              data: resultsFive
-            });  
+          $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
+            showPercentages: true,
+            firstColHeader: 'City',
+            data: resultsFive
+          }); 
+        });
           
           
           
