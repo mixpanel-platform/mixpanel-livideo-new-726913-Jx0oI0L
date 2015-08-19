@@ -66,7 +66,7 @@
           });
           
           MP.api.segment('Played Broadcast', '$city', params).done(function(resultsOne) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Played Broadcast by Top Location</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'bar',
@@ -89,7 +89,7 @@
           });
           
           MP.api.segment('Completed Subscription', 'Age Range', params).done(function(resultsTwo) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Subscriptions by Age Group</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'bar',
@@ -106,14 +106,14 @@
           
           //played broadcast over last 96 hours
           var params =  $.extend({}, dates, {
-            //'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
+            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
             'unit': 'hour',
             'from': moment().subtract(8, 'days'),
             'to': moment()
           });
           
           MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Overall Broadcast Watch Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Broadcast Watch Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
