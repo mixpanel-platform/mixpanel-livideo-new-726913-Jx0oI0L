@@ -196,27 +196,24 @@
           
           
         //average playlength
-        var endpoint = '/api/2.0/segmentation/average';
-        var dates = getDates();
         var params =  $.extend({}, dates, {
           'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
-          'on': 'number(properties["Length"])',
-          'event': 'Played Broadcast',
-          'interval': getInterval(dates)
+          'interval': getInterval(dates),
+          'method': 'average'
         });
-            
-        MP.api.query(endpoint, params).done(function(resultsSeven) {
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Average time watched</h1>' ).css({'padding': '10px'}).appendTo('body');
+          
+        MP.api.segment('Played Broadcast', 'Length', params).done(function(resultsSix) {
+          $('<h1 style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Who your fans are also watching</h1>' ).css({'padding': '10px'}).appendTo('body');
             
           $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
-            chartType: 'line',
-            data: resultsSeven
+            chartType: 'bar',
+            data: resultsSix
           });
             
           $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
             showPercentages: true,
-            firstColHeader: 'Event',
-            data: resultsSeven
+            firstColHeader: 'Broadcaster',
+            data: resultsSix
           }); 
         });  
           
