@@ -110,7 +110,7 @@
           });
           
           MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Broadcast Watch Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Overall Broadcast Watch Trend over last 96 hours</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
@@ -126,12 +126,13 @@
           
           //played broadcast over selected time period
           var params =  $.extend({}, dates, {
-            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
-            'interval': getInterval(dates)
+            //'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
+            'interval': getInterval(dates),
+            'unit': 'day'
           });
           
           MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
-            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Broadcast Watch Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Overall Broadcast Watch Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
                 chartType: 'line',
