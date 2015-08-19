@@ -231,10 +231,11 @@
         var params =  $.extend({}, dates, {
           'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
           'interval': getInterval(dates),
-          'method': 'sum'
+          'method': 'sum',
+          'on': 'number(properties["Cost"])'
         });
           
-        MP.api.segment('Completed Subscription', 'Cost', params).done(function(resultsEight) {
+        MP.api.segment('Completed Subscription', params).done(function(resultsEight) {
           var result = resultsEight.values();
           outputTwo["Played Broadcast"] = result;
           
