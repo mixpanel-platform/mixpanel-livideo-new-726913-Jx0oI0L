@@ -199,7 +199,8 @@
         var params =  $.extend({}, dates, {
           'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
           'interval': getInterval(dates),
-          'method': 'average'
+          'method': 'average',
+          'buckets':10
         });
           
         MP.api.segment('Played Broadcast', 'Length', params).done(function(resultsSeven) {
