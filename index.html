@@ -57,7 +57,7 @@
         });
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Location</h1>' ).appendTo('body');
+          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Location</h1>' ).css({'padding': '10px'}).appendTo('body');
           
           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
               chartType: 'bar',
