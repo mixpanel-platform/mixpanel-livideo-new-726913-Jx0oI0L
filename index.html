@@ -70,9 +70,9 @@
             data: results
           });
         });
-      }
+      };
       
-      function subscriptionsByAgeGroup(broadcaster, date) {
+      function subscriptionsByAgeGroup(broadcaster, date).done(function(results) {
         var params =  $.extend({}, date, {
           'where': '\"' + broadcaster + '\" in string(properties[\"Broadcaster\"])',
           'limit': 10,
@@ -80,7 +80,7 @@
         });
         
         MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(results) {
-          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Range</h1>' ).appendTo('body');
+          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
           
           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
               chartType: 'bar',
@@ -89,11 +89,11 @@
           
            $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
             showPercentages: true,
-            firstColHeader: 'City',
+            firstColHeader: 'Age Group',
             data: results
           });
         });
-      }
+      };
       
       var runQuery = function() {
         
