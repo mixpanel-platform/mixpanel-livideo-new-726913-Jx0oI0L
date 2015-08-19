@@ -112,6 +112,31 @@
           //subscriptionsByAgeGroup(broadcasterName, dates);
           
           var params =  $.extend({}, dates, {
+            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"]) and defined (properties[\"$city\"])',
+            'limit': 10,
+            'interval': getInterval(dates)
+          });
+          
+          MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
+            $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Location</h1>' ).css({'padding': '10px'}).appendTo('body');
+            
+            $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
+                chartType: 'bar',
+                data: results
+            });
+            
+             $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+              showPercentages: true,
+              firstColHeader: 'City',
+              data: results
+            });
+          });
+          
+          
+          
+          
+          
+          var params =  $.extend({}, dates, {
             'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
             'limit': 10,
             'interval': getInterval(dates)
