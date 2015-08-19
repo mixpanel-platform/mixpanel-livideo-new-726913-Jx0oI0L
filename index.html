@@ -135,6 +135,7 @@
           });
           
           MP.api.segment('Played Broadcast', dateRange, params).done(function(resultsFour) {
+            console.log(resultsFour.values())
             $('<h1 style="font-size: 15px; color: rgb(95,105,131)">' + broadcasterName + ': Watched Broadcast Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
             $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
