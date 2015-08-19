@@ -51,7 +51,7 @@
       var runQuery = function() {
         //obtain broadcaster and date range 
         var broadcasterName  = broadcasterSelect.MPSelect('value'),
-            dateRange = dateSelect.MPDatepicker('value');
+            dateRange = dateSelect.MPDatepicker('value')
             
         //selected broadcaster
         if (broadcasterName) {
@@ -127,10 +127,10 @@
           //played broadcast over selected time period
           var params =  $.extend({}, dates, {
             'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
-            'interval': getInterval(dates),
+            /'interval': getInterval(dates),
           });
           
-          MP.api.segment('Played Broadcast', params).done(function(resultsFour) {
+          MP.api.segment('Played Broadcast', dateRange, params).done(function(resultsFour) {
             console.log(resultsThree.values())
             $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Overall Broadcast Watch Trend over selected period</h1>' ).css({'padding': '10px'}).appendTo('body');
             
