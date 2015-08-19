@@ -128,7 +128,6 @@
           var params =  $.extend({}, dates, {
             //'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
             'interval': getInterval(dates),
-            'unit': 'day'
           });
           
           MP.api.segment('Played Broadcast', params).done(function(resultsThree) {
