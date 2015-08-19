@@ -17,10 +17,13 @@
       <div style="clear: both;"></div>
       
       <div id="graphOne"></div>
+      <div id="tableOne"></div>
+      
       <div id="graphTwo"></div>
+      <div id="tableTwo"></div>
       <div id="mpchart"></div>
     </div>
-    <div id="table"></div>
+    
     <script>
     MP.api.ready(function () {
       
@@ -39,13 +42,13 @@
         };
       var broadcasterSelect  = $('#mpselect').MPSelect(options);
       var dateSelect  = $('#dateSelect').MPDatepicker();
-      var eventGraphOne  = $('#graph').MPChart({chartType: 'bar'});
-      var eventGraphTwo  = $('#graph').MPChart({chartType: 'bar'});
+      var eventGraphOne  = $('#graphOne').MPChart({chartType: 'bar'});
+      var eventTableOne  = $('#tableOne').MPTable();
+      var eventGraphTwo  = $('#graphTwo').MPChart({chartType: 'bar'});
+      var eventTableTwo  = $('#tableTwo').MPTable();
 
       var eventStackedGraph  = $('#mpchart').MPChart({chartType: 'bar', stacked: true});
-      var eventTable  = $('#table').MPTable({
-        showPercentages: false,
-      });
+      
       
       //convenience method for grabbing that datepicker value
       getDates = function() {
@@ -67,10 +70,10 @@
         });
         
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
-          $('<div class="overallData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
-              chartType: 'bar',
-              data: results
-          });
+          // $('<div class="overallData"></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+          //     chartType: 'bar',
+          //     data: results
+          // });
           eventGraphOne.MPChart('setData', results);
           eventTable.MPTable('setData', results);
         });
