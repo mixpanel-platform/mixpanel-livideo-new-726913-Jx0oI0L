@@ -59,12 +59,12 @@
         MP.api.segment('Played Broadcast', '$city', params).done(function(results) {
           $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Played Broadcast by Location</h1>' ).appendTo('body');
           
-          $('<div></div><br/><br/><br>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+          $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
               chartType: 'bar',
               data: results
           });
           
-           $('<div></div><br/><br/><br>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
             showPercentages: true,
             firstColHeader: 'City',
             data: results
@@ -80,8 +80,18 @@
         });
         
         MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(results) {
-          eventGraphTwo.MPChart('setData', results);
-          eventTableTwo.MPTable('setData', results);
+          $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Range</h1>' ).appendTo('body');
+          
+          $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
+              chartType: 'bar',
+              data: results
+          });
+          
+           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+            showPercentages: true,
+            firstColHeader: 'City',
+            data: results
+          });
         });
       }
       
