@@ -126,7 +126,7 @@
           
           //played broadcast over selected time period
           var params =  $.extend({}, dates, {
-            //'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
+            'where': '\"' + broadcasterName + '\" in string(properties[\"Broadcaster\"])',
             'interval': getInterval(dates),
           });
           
