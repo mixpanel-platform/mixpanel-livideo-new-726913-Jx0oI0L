@@ -72,25 +72,25 @@
         });
       };
       
-      function subscriptionsByAgeGroup(broadcaster, date).done(function(results) {
+      function subscriptionsByAgeGroup(broadcaster, date) {
         var params =  $.extend({}, date, {
           'where': '\"' + broadcaster + '\" in string(properties[\"Broadcaster\"])',
           'limit': 10,
           'interval': getInterval(date)
         });
         
-        MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(results) {
+        MP.api.segment('Completed Subscriptions', 'Age Range', params).done(function(resultsOne) {
           $('<h1 style="font-size: 15px; color: rgb(95,105,131)"> Subscriptions by Age Group</h1>' ).appendTo('body');
           
           $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPChart({
               chartType: 'bar',
-              data: results
+              data: resultsOne
           });
           
            $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
             showPercentages: true,
             firstColHeader: 'Age Group',
-            data: results
+            data: resultsOne
           });
         });
       };
