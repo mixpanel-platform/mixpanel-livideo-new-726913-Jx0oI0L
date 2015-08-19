@@ -204,18 +204,21 @@
         });
           
         MP.api.segment('Played Broadcast', 'Length', params).done(function(resultsSeven) {
-          console.log(resultsSeven.values())
+          var result = resultsSeven.values();
+          var output = {};
+          var output["Played Broadcast"] = results;
+          
           $('<h1 style="font-size: 15px; color: rgb(95,105,131)">'  + broadcasterName + ': Who your fans are also watching</h1>' ).css({'padding': '10px'}).appendTo('body');
             
           $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '10px'}).appendTo('body').MPChart({
             chartType: 'line',
-            data: resultsSeven
+            data: output
           });
             
           $('<div></div>').css({'width':'100%', 'float':'left', 'padding': '15px'}).appendTo('body').MPTable({
             showPercentages: true,
             firstColHeader: 'Broadcaster',
-            data: resultsSeven
+            data: output
           }); 
         });  
           
