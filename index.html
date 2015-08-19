@@ -82,7 +82,14 @@
               data: results
           });
           
-          $('<div></div>').appendTo('body').MPTable({firstColHeader: 'City', data: results, showPercentages: false});
+          $('<div></div>').css({'width':'100%', 'float':'left'}).appendTo('body').MPTable({
+            showPercentages: true,
+            firstColHeader: 'City',
+            data: results
+          });
+          
+          
+          //$('<div></div>').appendTo('body').MPTable({firstColHeader: 'City', data: results, showPercentages: false});
         });
       }
       
